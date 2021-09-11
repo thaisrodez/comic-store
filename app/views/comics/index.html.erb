@@ -1,0 +1,7 @@
+<div class="container mt-5">
+  <ul>
+  <% @comics.each do |comic| %>
+    <li><%= comic.title %> | <%= comic.rating %></li>
+  <% end %>
+  </ul>
+</div>
