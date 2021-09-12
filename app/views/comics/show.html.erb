@@ -1,0 +1,17 @@
+<div class="container mt-5">
+  <h4><%= @comic.title %></h4>
+
+  <h5>
+  <%= pluralize @comic.reviews.size, "review" %>
+  </h5>
+
+  <div id="reviews">
+    <% if @comic.reviews.blank? %>
+      Be the first to leave a review for <%= @comic.title %>
+    <% else %>
+      <% @comic.reviews.each do |review| %>
+        <p><%= review.content %></p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
