@@ -14,4 +14,9 @@
       <% end %>
     <% end %>
   </div>
+
+  <%= simple_form_for([ @comic, @review ]) do |f| %>
+    <%= f.input :content, as: :text %>
+    <%= f.button :submit %>
+  <% end %>
 </div>
