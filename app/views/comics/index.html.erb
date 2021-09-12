@@ -5,4 +5,15 @@
     <li><%= comic.title %> | <%= comic.rating %></li>
   <% end %>
   </ul>
+
+   <div class="d-flex align-items-center" data-controller="disable-button">
+    <button class="btn btn-primary btn-lg"
+            data-disable-button-target="button"
+            data-action="click->disable-button#disable">
+      Click me!
+    </button>
+    <a class="d-none ml-2"
+      data-disable-button-target="link"
+      data-action="click->disable-button#reset">Reset</a>
+  </div>
 </div>
