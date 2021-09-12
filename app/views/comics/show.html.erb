@@ -5,18 +5,20 @@
   <%= pluralize @comic.reviews.size, "review" %>
   </h5>
 
-  <div id="reviews">
-    <% if @comic.reviews.blank? %>
-      Be the first to leave a review for <%= @comic.title %>
-    <% else %>
-      <% @comic.reviews.each do |review| %>
-        <p><%= review.content %></p>
-      <% end %>
-    <% end %>
-  </div>
 
-  <%= simple_form_for([ @comic, @review ]) do |f| %>
-    <%= f.input :content, as: :text %>
-    <%= f.button :submit %>
-  <% end %>
+  <div data-controller="insert-in-list">
+    <div data-insert-in-list-target="items">
+      <div id="reviews">
+        <% if @comic.reviews.blank? %>
+          Be the first to leave a review for <%= @comic.title %>
+        <% else %>
+          <% @comic.reviews.each do |review| %>
+            <%= render "review", review: review %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <%= render "reviews/form", {review: @review, comic: @comic} %>
+
+  </div>
 </div>

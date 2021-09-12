@@ -3,10 +3,15 @@ class ReviewsController < ApplicationController
     @comic = Comic.find(params[:comic_id])
     @review = Review.new(review_params)
     @review.comic = @comic
-    if @review.save
-      redirect_to comic_path(@comic)
-    else
-      render 'comics/show'
+
+    respond_to do |format|
+      if @review.save
+        format.html { redirect_to comic_path(@comic) }
+        format.json # Follow the classic Rails flow and look for a create.json view
+      else
+        format.html { render 'comics/show' }
+        format.json # Follow the classic Rails flow and look for a create.json view
+      end
     end
   end
 
